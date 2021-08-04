@@ -1,21 +1,37 @@
 {
-  "name": "bluete",
-  "version": "1.0.0",
-  "description": "Generate a Discord bot project within seconds!",
-  "main": "src/index.js",
-  "bin": "./src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "_from": "bluete",
+  "_id": "bluete@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-OUJnuVUrGB0IwMzOzHcDIwVccxDpwhi8ZKyKa7hrnh+0Ez9I0y8tsjq3FkAGtEV/bCXAefvijEjYwJQsnBxlWA==",
+  "_location": "/bluete",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "bluete",
+    "name": "bluete",
+    "escapedName": "bluete",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
   },
-  "keywords": [
-    "BlueTE",
-    "Generate",
-    "blue",
-    "blue te",
-    "tea"
+  "_requiredBy": [
+    "#USER"
   ],
-  "author": "Spaxly",
-  "license": "MIT",
+  "_resolved": "https://registry.npmjs.org/bluete/-/bluete-1.0.0.tgz",
+  "_shasum": "9b16fca67150bf87bcaa4ade7ed849ee6cf9bf20",
+  "_spec": "bluete",
+  "_where": "C:\\Users\\ohmch",
+  "author": {
+    "name": "Spaxly"
+  },
+  "bin": {
+    "bluete": "src/index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Spaxly/BlueTE-2.0/issues"
+  },
+  "bundleDependencies": false,
   "dependencies": {
     "@inquirer/input": "0.0.16-alpha.0",
     "@octokit/auth-basic": "^1.4.8",
@@ -39,12 +55,25 @@
     "simple-git": "^2.42.0",
     "touch": "^3.1.0"
   },
+  "deprecated": false,
+  "description": "Generate a Discord bot project within seconds!",
+  "homepage": "https://github.com/Spaxly/BlueTE-2.0#readme",
+  "keywords": [
+    "BlueTE",
+    "Generate",
+    "blue",
+    "blue te",
+    "tea"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "name": "bluete",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Spaxly/BlueTE-2.0.git"
   },
-  "bugs": {
-    "url": "https://github.com/Spaxly/BlueTE-2.0/issues"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/Spaxly/BlueTE-2.0#readme"
+  "version": "1.0.0"
 }

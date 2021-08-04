@@ -51,7 +51,7 @@ if (Selection == 1) {
     exec(`cd bot-project-${i}/commands/ && mkdir fun && mkdir misc && mkdir moderation && mkdir other`)
     console.log(chalk.greenBright('[*] Creating command subfolders'))
 
-    exec(`cd bot-project-${i} && echo const Discord = require('discord.js'); > index.js`)
+    exec(`cd bot-project-${i} && echo """const Discord = require('discord.js');"""> index.js`)
     console.log(chalk.greenBright('[*] Creating main.js file'))
 
     exec(`cd bot-project-${i}/config/ && echo {"token": "${TokenValue}", "prefix": "${PrefixValue}"} > config.json`)
@@ -65,15 +65,14 @@ if (Selection == 1) {
     exec(`cd bot-project-${i}/events/ && echo const Discord = require('discord.js'); > ready.js`)
     console.log(chalk.greenBright('[*] Creating ready.js event file'))
 
-    let main = fs.readFileSync('./templates/javascript/main.js', 'utf8')
-    
+    let main = fs.readFileSync(path.join(__dirname, 'templates/javascript/main.js'))
     fs.writeFile(`bot-project-${i}/index.js`, main, (err) => {
         // throws an error, you could also catch it here
     });
 
-    let testJSFile = fs.readFileSync('./templates/javascript/test.js', 'utf8')
-    let setprefixJSFile = fs.readFileSync('./templates/javascript/setprefix.js', 'utf8')
-    let readyJSFile = fs.readFileSync('./templates/javascript/ready.js', 'utf8')
+    let testJSFile = fs.readFileSync(path.join(__dirname, 'templates/javascript/test.js'))
+    let setprefixJSFile = fs.readFileSync(path.join(__dirname, 'templates/javascript/setprefix.js'))
+    let readyJSFile = fs.readFileSync(path.join(__dirname, 'templates/javascript/ready.js'))
 
     fs.writeFile(`bot-project-${i}/events/ready.js`, readyJSFile, (err) => {
         console.log(chalk.greenBright('[*] Writing to ready.js file'))
@@ -87,8 +86,8 @@ if (Selection == 1) {
         console.log(chalk.greenBright('[*] Writing to setprefix.js file'))
     });
 
-    const path = `bot-project-${i}`;
-    openExplorer(path, err => {
+    const pathProject = `bot-project-${i}`;
+    openExplorer(pathProject, err => {
         if(err) {
             console.log(err);
         }
@@ -145,8 +144,8 @@ if (Selection == 2) {
         bot.add_cog(Test(bot)) > test.py`)
     console.log(chalk.greenBright('[*] Creating test.py file'))
 
-    let main = fs.readFileSync('./templates/python/bot.py', 'utf8')
-    let testFile = fs.readFileSync('./templates/python/test.py', 'utf8')
+    let main = fs.readFileSync(path.join(__dirname, 'templates/python/bot.py'))
+    let testFile = fs.readFileSync(path.join(__dirname, 'templates/python/test.py'))
 
     fs.writeFile(`bot-project-${i}/bot.py`, main, (err) => {
         console.log(chalk.greenBright('[*] Writing to bot.py file'))
@@ -156,8 +155,8 @@ if (Selection == 2) {
         console.log(chalk.greenBright('[*] Writing to test.py file'))
     });
 
-    const path = `bot-project-${i}`;
-    openExplorer(path, err => {
+    const pathProject = `bot-project-${i}`;
+    openExplorer(pathProject, err => {
         if(err) {
             console.log(err);
         }
