@@ -1,8 +1,8 @@
 {
   "_from": "bluete",
-  "_id": "bluete@1.0.2",
+  "_id": "bluete@1.0.3",
   "_inBundle": false,
-  "_integrity": "sha512-OUJnuVUrGB0IwMzOzHcDIwVccxDpwhi8ZKyKa7hrnh+0Ez9I0y8tsjq3FkAGtEV/bCXAefvijEjYwJQsnBxlWA==",
+  "_integrity": "sha512-kAkwWjY9qMoWfZaDjF523SbiJyT6YJ0tWqkx8g/iV6azdKuTY5Ci02kgtj+q1xWKp5YVghjb0PIb+J1kODUFYA==",
   "_location": "/bluete",
   "_phantomChildren": {},
   "_requested": {
@@ -16,10 +16,11 @@
     "fetchSpec": "latest"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "https://registry.npmjs.org/bluete/-/bluete-1.0.0.tgz",
-  "_shasum": "9b16fca67150bf87bcaa4ade7ed849ee6cf9bf20",
+  "_resolved": "https://registry.npmjs.org/bluete/-/bluete-1.0.3.tgz",
+  "_shasum": "e662e4a8ae31051f958e2665ec05c90c8bc7c1c9",
   "_spec": "bluete",
   "_where": "C:\\Users\\ohmch",
   "author": {
@@ -75,5 +76,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.2"
+  "version": "1.0.3"
 }

@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-const client = new Discord.Client({ intents: Discord.Intents.ALL });
+const intents = new Discord.Intents(32767);
+const client = new Discord.Client({ intents });
 const config = require('./config/config.json');
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();

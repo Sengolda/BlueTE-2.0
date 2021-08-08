@@ -30,73 +30,149 @@ var i = randomNumber(1, 999)
 var Selection = prompt(chalk.greenBright('>> Select: 1: JavaScript, 2: Python, 3: TypeScript [Coming Soon]'))
 
 if (Selection == 1) {
-    exec(`npm install discord.js`)
-    console.log(chalk.greenBright('[*] Installing required package: Discord.JS'))
-    exec(`npm install quick.db`)
-    console.log(chalk.greenBright('[*] Installing required package: Quick.DB'))
+    var JSSelection = prompt(chalk.greenBright('>> 1. DiscordJS V13 [Latest] | 2. DiscordJS V12'))
 
-    // Creates the base bot project folder
-    exec(`mkdir bot-project-${i}`)
-    console.log(chalk.greenBright('[*] Creating base folder'))
+    if (JSSelection == 1) {
+        exec(`npm install discord.js`)
+        console.log(chalk.greenBright('[*] Installing required package: Discord.JS'))
+        exec(`npm install quick.db`)
+        console.log(chalk.greenBright('[*] Installing required package: Quick.DB'))
 
-    exec(`cd bot-project-${i} && mkdir config`)
-    console.log(chalk.greenBright('[*] Creating config folder'))
+        // Creates the base bot project folder
+        exec(`mkdir bot-project-${i}`)
+        console.log(chalk.greenBright('[*] Creating base folder'))
 
-    exec(`cd bot-project-${i} && mkdir commands`)
-    console.log(chalk.greenBright('[*] Creating commands folder'))
+        exec(`cd bot-project-${i} && mkdir config`)
+        console.log(chalk.greenBright('[*] Creating config folder'))
 
-    exec(`cd bot-project-${i} && mkdir events`)
-    console.log(chalk.greenBright('[*] Creating events folder'))
+        exec(`cd bot-project-${i} && mkdir commands`)
+        console.log(chalk.greenBright('[*] Creating commands folder'))
 
-    exec(`cd bot-project-${i}/commands/ && mkdir fun && mkdir misc && mkdir moderation && mkdir other`)
-    console.log(chalk.greenBright('[*] Creating command subfolders'))
+        exec(`cd bot-project-${i} && mkdir events`)
+        console.log(chalk.greenBright('[*] Creating events folder'))
 
-    exec(`cd bot-project-${i} && echo """const Discord = require('discord.js');"""> index.js`)
-    console.log(chalk.greenBright('[*] Creating main.js file'))
+        exec(`cd bot-project-${i} && mkdir utils`)
+        console.log(chalk.greenBright('[*] Creating utils folder'))
 
-    exec(`cd bot-project-${i}/config/ && echo {"token": "${TokenValue}", "prefix": "${PrefixValue}"} > config.json`)
-    console.log(chalk.greenBright('[*] Creating config.json file'))
+        exec(`cd bot-project-${i} && echo """const Discord = require('discord.js');"""> index.js`)
+        console.log(chalk.greenBright('[*] Creating main.js file'))
 
-    exec(`cd bot-project-${i}/commands/other/ && echo const Discord = require('discord.js'); > test.js`)
-    console.log(chalk.greenBright('[*] Creating test.js command file'))
+        exec(`cd bot-project-${i}/config/ && echo {"token": "${TokenValue}", "prefix": "${PrefixValue}"} > config.json`)
+        console.log(chalk.greenBright('[*] Creating config.json file'))
 
-    exec(`cd bot-project-${i}/commands/misc/ && echo const Discord = require('discord.js'); > setprefix.js`)
+        exec(`cd bot-project-${i}/commands/ && echo const Discord = require('discord.js'); > test.js`)
+        console.log(chalk.greenBright('[*] Creating test.js command file'))
+    
+        exec(`cd bot-project-${i}/events/ && echo const Discord = require('discord.js'); > ready.js`)
+        console.log(chalk.greenBright('[*] Creating ready.js event file'))
 
-    exec(`cd bot-project-${i}/events/ && echo const Discord = require('discord.js'); > ready.js`)
-    console.log(chalk.greenBright('[*] Creating ready.js event file'))
+        exec(`cd bot-project-${i}/utils/ && echo const Discord = require('discord.js'); > command.js`)
+        console.log(chalk.greenBright('[*] Creating command.js command handler file'))
 
-    let main = fs.readFileSync(path.join(__dirname, 'templates/javascript/main.js'))
-    fs.writeFile(`bot-project-${i}/index.js`, main, (err) => {
-        // throws an error, you could also catch it here
-    });
+        exec(`cd bot-project-${i}/utils/ && echo const Discord = require('discord.js'); > client.js`)
+        console.log(chalk.greenBright('[*] Creating client.js client file'))
 
-    let testJSFile = fs.readFileSync(path.join(__dirname, 'templates/javascript/test.js'))
-    let setprefixJSFile = fs.readFileSync(path.join(__dirname, 'templates/javascript/setprefix.js'))
-    let readyJSFile = fs.readFileSync(path.join(__dirname, 'templates/javascript/ready.js'))
+        let main = fs.readFileSync(path.join(__dirname, 'templates/javascript/v13/main.js'))
+        fs.writeFile(`bot-project-${i}/index.js`, main, (err) => {
+            // throws an error, you could also catch it here
+        });
 
-    fs.writeFile(`bot-project-${i}/events/ready.js`, readyJSFile, (err) => {
-        console.log(chalk.greenBright('[*] Writing to ready.js file'))
-    });
+        let testJSFile = fs.readFileSync(path.join(__dirname, 'templates/javascript/v13/test.js'))
+        let readyJSFile = fs.readFileSync(path.join(__dirname, 'templates/javascript/v13/ready.js'))
+        let commandJSFile = fs.readFileSync(path.join(__dirname, 'templates/javascript/v13/command.js'))
+        let clientJSFile = fs.readFileSync(path.join(__dirname, 'templates/javascript/v13/client.js'))
 
-    fs.writeFile(`bot-project-${i}/commands/other/test.js`, testJSFile, (err) => {
-        console.log(chalk.greenBright('[*] Writing to test.js file'))
-    });
+        fs.writeFile(`bot-project-${i}/events/ready.js`, readyJSFile, (err) => {
+            console.log(chalk.greenBright('[*] Writing to ready.js file'))
+        });
 
-    fs.writeFile(`bot-project-${i}/commands/misc/setprefix.js`, setprefixJSFile, (err) => {
-        console.log(chalk.greenBright('[*] Writing to setprefix.js file'))
-    });
+        fs.writeFile(`bot-project-${i}/commands/test.js`, testJSFile, (err) => {
+            console.log(chalk.greenBright('[*] Writing to test.js file'))
+        });
 
-    const pathProject = `bot-project-${i}`;
-    openExplorer(pathProject, err => {
-        if(err) {
-            console.log(err);
-        }
-        else {
-            console.log("[!] Success! Opened bot project folder!")
-        }
-    });
+        fs.writeFile(`bot-project-${i}/utils/command.js`, commandJSFile, (err) => {
+            console.log(chalk.greenBright('[*] Writing to command.js file'))
+        });
+
+        fs.writeFile(`bot-project-${i}/utils/client.js`, clientJSFile, (err) => {
+            console.log(chalk.greenBright('[*] Writing to client.js file'))
+        });
+
+
+        const pathProject = `bot-project-${i}`;
+        openExplorer(pathProject, err => {
+            if(err) {
+                console.log(err);
+            }
+            else {
+                console.log("[!] Success! Opened bot project folder!")
+            }
+        });
 
     console.log(chalk.greenBright("[!] Success! Opened bot project folder!"))
+    }
+
+    if (JSSelection == 2) {
+        exec(`npm install discord.js`)
+        console.log(chalk.greenBright('[*] Installing required package: Discord.JS'))
+        exec(`npm install quick.db`)
+        console.log(chalk.greenBright('[*] Installing required package: Quick.DB'))
+    
+        // Creates the base bot project folder
+        exec(`mkdir bot-project-${i}`)
+        console.log(chalk.greenBright('[*] Creating base folder'))
+    
+        exec(`cd bot-project-${i} && mkdir config`)
+        console.log(chalk.greenBright('[*] Creating config folder'))
+    
+        exec(`cd bot-project-${i} && mkdir commands`)
+        console.log(chalk.greenBright('[*] Creating commands folder'))
+    
+        exec(`cd bot-project-${i} && mkdir events`)
+        console.log(chalk.greenBright('[*] Creating events folder'))
+    
+        exec(`cd bot-project-${i}/commands/ && mkdir fun && mkdir misc && mkdir moderation && mkdir other`)
+        console.log(chalk.greenBright('[*] Creating command subfolders'))
+    
+        exec(`cd bot-project-${i} && echo """const Discord = require('discord.js');"""> index.js`)
+        console.log(chalk.greenBright('[*] Creating main.js file'))
+    
+        exec(`cd bot-project-${i}/config/ && echo {"token": "${TokenValue}", "prefix": "${PrefixValue}"} > config.json`)
+        console.log(chalk.greenBright('[*] Creating config.json file'))
+    
+        exec(`cd bot-project-${i}/commands/other/ && echo const Discord = require('discord.js'); > test.js`)
+        console.log(chalk.greenBright('[*] Creating test.js command file'))
+
+    
+        exec(`cd bot-project-${i}/events/ && echo const Discord = require('discord.js'); > ready.js`)
+        console.log(chalk.greenBright('[*] Creating ready.js event file'))
+    
+        let main = fs.readFileSync(path.join(__dirname, 'templates/javascript/v12/main.js'))
+        fs.writeFile(`bot-project-${i}/index.js`, main, (err) => {
+            // throws an error, you could also catch it here
+        });
+    
+        let testJSFile = fs.readFileSync(path.join(__dirname, 'templates/javascript/v12/test.js'))
+        let readyJSFile = fs.readFileSync(path.join(__dirname, 'templates/javascript/v12/ready.js'))
+    
+        fs.writeFile(`bot-project-${i}/events/ready.js`, readyJSFile, (err) => {
+            console.log(chalk.greenBright('[*] Writing to ready.js file'))
+        });
+    
+        fs.writeFile(`bot-project-${i}/commands/other/test.js`, testJSFile, (err) => {
+            console.log(chalk.greenBright('[*] Writing to test.js file'))
+        });
+    
+        const pathProject = `bot-project-${i}`;
+        openExplorer(pathProject, err => {
+            if(err) {
+                console.log(err);
+            }
+            else {
+                console.log("[!] Success! Opened bot project folder!")
+            }
+        });
+    }
 }
 
 if (Selection == 2) {
