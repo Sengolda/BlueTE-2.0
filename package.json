@@ -1,6 +1,5 @@
 {
   "_from": "bluete",
-  "_id": "bluete@1.0.3",
   "_inBundle": false,
   "_integrity": "sha512-kAkwWjY9qMoWfZaDjF523SbiJyT6YJ0tWqkx8g/iV6azdKuTY5Ci02kgtj+q1xWKp5YVghjb0PIb+J1kODUFYA==",
   "_location": "/bluete",
@@ -76,5 +75,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.3"
+  "version": "1.0.4"
 }
