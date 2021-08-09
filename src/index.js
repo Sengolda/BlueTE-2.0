@@ -176,6 +176,10 @@ if (Selection == 1) {
 }
 
 if (Selection == 2) {
+    var PYSelection = prompt(chalk.greenBright('>> 1. Basic [Not subclassed, for beginners] | 2. Advanced [Subclassed, for non-beginners]'))
+    
+    if (PYSelection == 1) {
+
     exec('py -m pip3 install discord.py')
     console.log(chalk.greenBright('[*] Installing Required Package: Discord.PY'))
 
@@ -220,8 +224,8 @@ if (Selection == 2) {
         bot.add_cog(Test(bot)) > test.py`)
     console.log(chalk.greenBright('[*] Creating test.py file'))
 
-    let main = fs.readFileSync(path.join(__dirname, 'templates/python/bot.py'))
-    let testFile = fs.readFileSync(path.join(__dirname, 'templates/python/test.py'))
+    let main = fs.readFileSync(path.join(__dirname, 'templates/python/basic/bot.py'))
+    let testFile = fs.readFileSync(path.join(__dirname, 'templates/python/basic/test.py'))
 
     fs.writeFile(`bot-project-${i}/bot.py`, main, (err) => {
         console.log(chalk.greenBright('[*] Writing to bot.py file'))
@@ -241,11 +245,93 @@ if (Selection == 2) {
         }
     });
 
-    console.log(chalk.greenBright("[!] Success! Opened bot project folder!"))
+    console.log(chalk.greenBright("[!] Success! Opened bot project folder!")) 
+    }
 
+    if (PYSelection == 2) {
+        exec('py -m pip3 install discord.py')
+        console.log(chalk.greenBright('[*] Installing Required Package: Discord.PY'))
 
-    // exec(`move bot-project-${i} %HOMEDRIVE%%HOMEPATH%/Desktop`)
-    // console.log(chalk.greenBright("[*] Folder moved to Desktop"))
+        exec('py -m pip3 install aiosqlite')
+        console.log(chalk.greenBright('[*] Installing Required Package: AioSQLITE'))
+
+        exec(`mkdir bot-project-${i}`)
+        console.log(chalk.greenBright('[*] Creating base folder'))
+
+        exec(`cd bot-project-${i} && mkdir lib`)
+        console.log(chalk.greenBright('[*] Creating lib folder'))
+        
+        exec(`cd bot-project-${i}/lib && mkdir commands`)
+        console.log(chalk.greenBright('[*] Creating commands folder'))
+
+        exec(`cd bot-project-${i}/lib && mkdir config`)
+        console.log(chalk.greenBright('[*] Creating config folder'))
+
+        exec(`cd bot-project-${i}/lib && mkdir utils`)
+        console.log(chalk.greenBright('[*] Creating utils folder'))
+
+        exec(`cd bot-project-${i} && echo import discord > bot.py`)
+        console.log(chalk.greenBright('[*] Creating bot.py file'))
+
+        exec(`cd bot-project-${i} && echo import discord > launch.py`)
+        console.log(chalk.greenBright('[*] Creating launch.py file'))
+
+        exec(`cd bot-project-${i}/lib/config && echo TOKEN = "${TokenValue}" > token.py`)
+        console.log(chalk.greenBright("[*] Creating token.py file"))
+
+        exec(`cd bot-project-${i}/lib/config && echo PREFIX = "${PrefixValue}" > prefix.py`)
+
+        exec(`cd bot-project-${i}/lib/commands/ && echo import discord
+        from discord.ext import commands
+        
+        class Test(commands.Cog):
+            def __init__(self, bot):
+                self.bot = bot
+        
+            @commands.command()
+            async def test(self, ctx):
+                await ctx.send("Test command works!")
+        
+        def setup(bot):
+            bot.add_cog(Test(bot)) > test.py`)
+        console.log(chalk.greenBright('[*] Creating test.py file'))
+
+        exec(`cd bot-project-${i}/lib/utils/ && echo import discord > help.py`)
+        console.log(chalk.greenBright('[*] Creating help.py file'))
+
+        let main = fs.readFileSync(path.join(__dirname, 'templates/python/advanced/bot.py'))
+        let testFile = fs.readFileSync(path.join(__dirname, 'templates/python/advanced/test.py'))
+        let helpFile = fs.readFileSync(path.join(__dirname, 'templates/python/advanced/help.py'))
+        let launchFile = fs.readFileSync(path.join(__dirname, 'templates/python/advanced/launch.py'))
+
+        fs.writeFile(`bot-project-${i}/bot.py`, main, (err) => {
+            console.log(chalk.greenBright('[*] Writing to bot.py file'))
+        });
+
+        fs.writeFile(`bot-project-${i}/lib/commands/test.py`, testFile, (err) => {
+            console.log(chalk.greenBright('[*] Writing to test.py file'))
+        });
+
+        fs.writeFile(`bot-project-${i}/lib/utils/help.py`, helpFile, (err) => {
+            console.log(chalk.greenBright('[*] Writing to help.py file'))
+        });
+
+        fs.writeFile(`bot-project-${i}/launch.py`, launchFile, (err) => {
+            console.log(chalk.greenBright('[*] Writing to launch.py file'))
+        })
+
+        const pathProject = `bot-project-${i}`;
+        openExplorer(pathProject, err => {
+            if(err) {
+                console.log(err);
+            }
+            else {
+                console.log("Opened bot project folder!")
+            }
+        });
+
+    console.log(chalk.greenBright("[!] Success! Opened bot project folder!")) 
+    }
 }
 
 if (Selection == 3) {
