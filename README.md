@@ -1,5 +1,4 @@
 <h1 align="center">BlueTE 2.0-Revamped</h1>
-================================
 <p align="center">Generate a Discord bot project within seconds!</p>
 
 ## About BlueTE 2.0
